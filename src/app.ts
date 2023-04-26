@@ -6,7 +6,7 @@ import router from "./router";
 import errorMiddleware from "./middlewares/error-middlewares";
 
 require("dotenv").config();
-const PORT = 5000;
+const PORT = "https://node-movie-search-web.vercel.app/";
 const app = express();
 
 app.use(express.json());
