@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Router = require("express").Router;
+const user_controller_1 = require("../controllers/user-controller");
+const router = new Router();
+const express_validator_1 = require("express-validator");
+router.post("/registration", (0, express_validator_1.body)('email').isEmail(), (0, express_validator_1.body)('password').isLength({ min: 3, max: 32 }), user_controller_1.userController.registration);
+router.post("/login", user_controller_1.userController.login);
+router.post("/logout", user_controller_1.userController.logout);
+router.get("/activate/:link", user_controller_1.userController.activate);
+router.get("/refresh", user_controller_1.userController.refresh);
+exports.default = router;
