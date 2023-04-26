@@ -11,13 +11,12 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-
-const corsOptions = {
-  credentials: true,
-  origin: process.env.CLIENT_URL,
-  optionSuccessStatus:200
-}
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL,
+  })
+);
 app.use("/api", router);
 app.use(errorMiddleware);
 
