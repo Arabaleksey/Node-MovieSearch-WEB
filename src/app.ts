@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -19,6 +19,10 @@ app.use(
 );
 app.use("/api", router);
 app.use(errorMiddleware);
+
+app.get('/', (_req: Request, res: Response) => {
+  return res.send('Express Typescript on Vercel')
+})
 
 const start = async () => {
   try {
