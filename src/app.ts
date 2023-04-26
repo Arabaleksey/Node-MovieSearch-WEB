@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
-let cors = require('cors')
+var cors = require('cors')
 import router from "./router";
 import errorMiddleware from "./middlewares/error-middlewares";
 
