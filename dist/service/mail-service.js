@@ -21,8 +21,8 @@ class MailService {
             port: "587",
             secure: false,
             auth: {
-                user: "roottestforback@gmail.com",
-                pass: "aahlxjlqbpxgvywa",
+                user: "sendmailerformoviewebsite@gmail.com",
+                pass: "quqnufxzzwvhgdyt",
             },
             tls: {
                 rejectUnauthorized: false,

@@ -9,18 +9,18 @@ class MailService {
       port: "587",
       secure: false,
       auth: {
-        user: "roottestforback@gmail.com",
-        pass: "aahlxjlqbpxgvywa",
+        user: "sendmailerformoviewebsite@gmail.com",
+        pass: "quqnufxzzwvhgdyt",
       },
-      tls:{
-        rejectUnauthorized:false,
-      }
+      tls: {
+        rejectUnauthorized: false,
+      },
     });
   }
 
   async sendActivationMail(to: string, link: string) {
     await this.transporter.sendMail({
-      from: process.env.SMTP_USER, 
+      from: process.env.SMTP_USER,
       to,
       subject: "Активация аккаунта на" + process.env.API_URL,
       text: "",

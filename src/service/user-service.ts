@@ -7,7 +7,12 @@ import UserDto from "../dtos/user-dto";
 import ApiError from "../exceptions/api-error";
 
 class UserService {
-  async registration(name: string, surname:string, email: string, password: string) {
+  async registration(
+    name: string,
+    surname: string,
+    email: string,
+    password: string
+  ) {
     const candidate = await UserModel.findOne({ email });
     if (candidate) {
       throw ApiError.BadRequest(
@@ -17,7 +22,7 @@ class UserService {
     const hashPassword = await bcrypt.hash(password, 3);
     const activationLink = uuid.v4();
     const user = await UserModel.create({
-      name, 
+      name,
       surname,
       email,
       password: hashPassword,
@@ -28,7 +33,7 @@ class UserService {
       `${process.env.API_URL}/api/activate/${activationLink}`
     );
 
-    const userDto = new UserDto(user); 
+    const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({ ...userDto });
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
 
@@ -78,7 +83,7 @@ class UserService {
     const userData = tokenService.validateRefreshToken(refreshToken);
     const tokenFromDb = await tokenService.findToken(refreshToken);
     if (!userData || !tokenFromDb) {
-      throw ApiError.UnauthorizedError();
+      throw ApiError.BadRequest('asdas');
     }
     const user = await UserModel.findById(userData.id);
     const userDto = new UserDto(user);

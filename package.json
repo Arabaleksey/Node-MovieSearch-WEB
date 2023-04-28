@@ -2,6 +2,7 @@
   "name": "moviesearch-web",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node dist/app.js",
     "dev": "ts-node src/app.ts",

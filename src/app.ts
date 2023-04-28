@@ -20,9 +20,9 @@ app.use(
 app.use("/api", router);
 app.use(errorMiddleware);
 
-app.get('/', (_req: Request, res: Response) => {
-  return res.send('Express Typescript on Vercel')
-})
+// app.get('/', (_req: Request, res: Response) => {
+//   return res.send('Express Typescript on Vercel')
+// })
 
 const start = async () => {
   try {
