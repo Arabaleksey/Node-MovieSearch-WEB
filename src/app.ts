@@ -11,9 +11,6 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use((req: any, res: any, next: any) => {
-  res.setHeader("Access-Control-Allow-Origin", process.env.CLIENT_URL);
-});
 app.use(
   cors({
     credentials: true,
