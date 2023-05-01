@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use((req:any, res:any, next:any) => {
   res.setHeader(
     'Access-Control-Allow-Origin',
-    process.env.CLIENT_URL
+    // process.env.CLIENT_URL
   )
 })
 app.use(
