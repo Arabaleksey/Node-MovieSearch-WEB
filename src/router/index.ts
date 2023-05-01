@@ -1,4 +1,5 @@
 const Router = require("express").Router;
+import tokenMiddlewares from "../middlewares/token-middlewares";
 import { userController } from "../controllers/user-controller";
 
 const router = new Router();
@@ -12,6 +13,6 @@ userController.registration);
 router.post("/login", userController.login);
 router.post("/logout", userController.logout);
 router.get("/activate/:link", userController.activate);
-router.get("/refresh", userController.refresh);
+router.get("/refresh", tokenMiddlewares, userController.refresh);
 
 export default router;
