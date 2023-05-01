@@ -11,13 +11,29 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    credentials: true,
-    origin: process.env.CLIENT_URL,
-    // origin: true,
-  })
-);
+
+const corsOptions = {
+  //To allow requests from client
+  origin: [
+    process.env.CLIENT_URL,
+    "http://127.0.0.1",
+    "http://104.142.122.231",
+  ],
+  credentials: true,
+  exposedHeaders: ["set-cookie"],
+};
+
+
+
+app.use("/", cors(corsOptions), router);
+
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: process.env.CLIENT_URL,
+//     // origin: true,
+//   })
+// );
 app.use("/api", router);
 app.use(errorMiddleware);
 
