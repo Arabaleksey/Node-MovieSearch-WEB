@@ -11,13 +11,31 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    credentials: true,
-    // origin: process.env.CLIENT_URL,
-    origin: true,
-  })
-);
+
+
+const corsOptions = {
+  credentials: true,
+  origin: (origin:any, callback:any) => {
+
+      // `!origin` allows server-to-server requests (ie, localhost requests)
+      if(!origin || process.env.CLIENT_URL.indexOf(origin) !== -1) {
+          callback(null, true)
+      } else {
+          callback(new Error("Not allowed by CORS: "+ origin))
+      }
+  },
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
+
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: process.env.CLIENT_URL,
+//     // origin: true,
+//   })
+// );
 app.use("/api", router);
 app.use(errorMiddleware);
 

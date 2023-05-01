@@ -28,7 +28,7 @@ class UserController {
                 const userData = yield user_service_1.userService.registration(name, surname, email, password);
                 res.cookie("refreshToken", userData.refreshToken, {
                     maxAge: 30 * 24 * 60 * 60 * 1000,
-                    httpOnly: false,
+                    httpOnly: true,
                 });
                 return res.json(userData);
             }
@@ -44,7 +44,7 @@ class UserController {
                 const userData = yield user_service_1.userService.login(email, password);
                 res.cookie("refreshToken", userData.refreshToken, {
                     maxAge: 30 * 24 * 60 * 60 * 1000,
-                    httpOnly: false,
+                    httpOnly: true,
                 });
                 return res.json(userData);
             }
@@ -85,7 +85,7 @@ class UserController {
                 const userData = yield user_service_1.userService.refresh(refreshToken);
                 res.cookie("refreshToken", userData.refreshToken, {
                     maxAge: 30 * 24 * 60 * 60 * 1000,
-                    httpOnly: false,
+                    httpOnly: true,
                 });
                 return res.json(userData);
             }
