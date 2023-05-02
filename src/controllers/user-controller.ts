@@ -12,11 +12,16 @@ class UserController {
         );
       }
       const { name, surname, email, password } = req.body;
-      const userData = await userService.registration(name, surname, email, password);
+      const userData = await userService.registration(
+        name,
+        surname,
+        email,
+        password
+      );
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        
+        secure: true,
       });
       return res.json(userData);
     } catch (e) {
@@ -31,6 +36,7 @@ class UserController {
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        secure: true,
       });
       return res.json(userData);
     } catch (e) {
@@ -66,13 +72,13 @@ class UserController {
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        secure: true,
       });
       return res.json(userData);
     } catch (e) {
       next(e);
     }
   }
-
 }
 
 export const userController = new UserController();
