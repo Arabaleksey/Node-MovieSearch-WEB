@@ -28,6 +28,8 @@ class UserController {
         .cookie("refreshToken", userData.refreshToken, {
           httpOnly: true,
           maxAge: 30 * 24 * 60 * 60 * 1000,
+          sameSite:'none',
+          secure:true,
           domain:
             process.env.CLIENT_URL === "development"
               ? ".localhost"
@@ -55,6 +57,8 @@ class UserController {
         .cookie("refreshToken", userData.refreshToken, {
           httpOnly: true,
           maxAge: 30 * 24 * 60 * 60 * 1000,
+          sameSite:'none',
+          secure:true,
           domain:
             process.env.CLIENT_URL === "development"
               ? ".localhost"
@@ -101,6 +105,8 @@ class UserController {
         .status(200)
         .cookie("refreshToken", userData.refreshToken, {
           httpOnly: true,
+          sameSite:'none',
+          secure:true,
           maxAge: 30 * 24 * 60 * 60 * 1000,
           domain:
             process.env.CLIENT_URL === "development"
