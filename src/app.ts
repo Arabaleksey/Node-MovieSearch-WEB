@@ -23,7 +23,7 @@ app.use((req: any, res: any, next: any) => {
 
 app.use(
   cors({
-    // credentials: true,
+    credentials: true,
     origin: process.env.CLIENT_URL,
   })
 );
