@@ -11,20 +11,11 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use((req: any, res: any, next: any) => {
-  res.setHeader("Access-Control-Allow-Origin", process.env.CLIENT_URL);
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type"
-  );
-  next();
-});
-
 app.use(
   cors({
     credentials: true,
     origin: process.env.CLIENT_URL,
+    // origin: true,
   })
 );
 app.use("/api", router);

@@ -24,19 +24,6 @@ class UserController {
         httpOnly: true,
         secure: true,
       });
-      // res
-      //   .status(200)
-      //   .cookie("refreshToken", userData.refreshToken, {
-      //     httpOnly: true,
-      //     maxAge: 30 * 24 * 60 * 60 * 1000,
-      //     sameSite:'none',
-      //     secure:true,
-      //     domain:
-      //       process.env.CLIENT_URL === "development"
-      //         ? ".localhost"
-      //         : ".domain.com",
-      //   })
-      //   .json();
       return res.json(userData);
     } catch (e) {
       next(e);
@@ -53,20 +40,6 @@ class UserController {
         secure: true,
         sameSite: "none",
       });
-
-      // res
-      //   .status(200)
-      //   .cookie("refreshToken", userData.refreshToken, {
-      //     httpOnly: true,
-      //     maxAge: 30 * 24 * 60 * 60 * 1000,
-      //     sameSite:'none',
-      //     secure:true,
-      //     domain:
-      //       process.env.CLIENT_URL === "development"
-      //         ? ".localhost"
-      //         : ".domain.com",
-      //   })
-      //   .json();
       return res.json(userData);
     } catch (e) {
       next(e);
@@ -96,27 +69,16 @@ class UserController {
 
   async refresh(req: any, res: any, next: any) {
     try {
-      const { refreshToken } = req.cookies;
+      // const { refreshToken } = req.cookies;y
+
+      const { refreshToken } = req.body;
       const userData = await userService.refresh(refreshToken);
-      res.cookie("refreshToken", userData.refreshToken, {
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
-        secure: true,
-        sameSite: "none",
-      });
-      // res
-      //   .status(200)
-      //   .cookie("refreshToken", userData.refreshToken, {
-      //     httpOnly: true,
-      //     sameSite:'none',
-      //     secure:true,
-      //     maxAge: 30 * 24 * 60 * 60 * 1000,
-      //     domain:
-      //       process.env.CLIENT_URL === "development"
-      //         ? ".localhost"
-      //         : ".domain.com",
-      //   })
-      //   .json();
+      // res.cookie("refreshToken", userData.refreshToken, {
+      //   maxAge: 30 * 24 * 60 * 60 * 1000,
+      //   httpOnly: true,
+      //   secure: true,
+      //   sameSite: "none",
+      // });
       return res.json(userData);
     } catch (e) {
       next(e);
