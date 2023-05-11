@@ -26,7 +26,7 @@ class MailService {
             },
             tls: {
                 rejectUnauthorized: false,
-            }
+            },
         });
     }
     sendActivationMail(to, link) {

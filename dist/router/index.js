@@ -8,5 +8,5 @@ router.post("/registration", (0, express_validator_1.body)('email').isEmail(), (
 router.post("/login", user_controller_1.userController.login);
 router.post("/logout", user_controller_1.userController.logout);
 router.get("/activate/:link", user_controller_1.userController.activate);
-router.get("/refresh", user_controller_1.userController.refresh);
+router.post("/refresh", user_controller_1.userController.refresh);
 exports.default = router;

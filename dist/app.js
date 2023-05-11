@@ -26,9 +26,13 @@ app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
     credentials: true,
     origin: process.env.CLIENT_URL,
+    // origin: true,
 }));
 app.use("/api", router_1.default);
 app.use(error_middlewares_1.default);
+// app.get('/', (_req: Request, res: Response) => {
+//   return res.send('Express Typescript on Vercel')
+// })
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield mongoose_1.default.connect(process.env.MONGODB_URL);
